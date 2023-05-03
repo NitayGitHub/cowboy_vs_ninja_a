@@ -21,7 +21,7 @@ namespace ariel
         cout << "(" << x << "," << y << ")";
     }
 
-    Point Point::moveTowards(const Point &source, const Point &dest, double dist) const
+    Point Point::moveTowards(const Point &source, const Point &dest, double dist)
     {
         double maxDistance = source.distance(dest);
         if (maxDistance < dist)

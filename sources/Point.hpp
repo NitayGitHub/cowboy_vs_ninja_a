@@ -16,7 +16,7 @@ namespace ariel
         Point(double x, double y);
         double distance(const Point &other) const;
         void print() const;
-        Point moveTowards(const Point &source, const Point &dest, double dist) const;
+        static Point moveTowards(const Point &source, const Point &dest, double dist);
 
         // getters and setters
         double getX() const;
