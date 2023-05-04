@@ -8,19 +8,33 @@ using namespace std;
 
 namespace ariel
 {
+    enum characterType
+    {
+        COWBOY = 0,
+        NINJA = 1
+    };
+
     class Character
     {
-    private:
+    protected:
+        characterType type;
         string name;
         Point location;
         int HP; // Health Points
-    
+
     public:
-        Character(string name, Point location, int HP);
-        bool isAlive() const;
+        // Constructors
+        Character(string name, Point location, int HP, characterType type);
+
+        // Functions
+        virtual bool isAlive() const;
+        virtual void hit(int damage);
+        virtual double distance(const Character &other) const;
+        virtual void print() const;
 
         // Getters and Setters
         string getName() const;
+        characterType getType() const;
         Point getLocation() const;
         int getHP() const;
         void setName(string name);

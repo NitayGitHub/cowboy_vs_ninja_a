@@ -4,6 +4,7 @@
 using namespace std;
 namespace ariel
 {
+    // Constructors
 
     Point::Point(double x, double y) : x(x), y(y) {}
 
