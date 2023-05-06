@@ -18,7 +18,7 @@ namespace ariel
         Cowboy(string name, Point location);
 
         // Functions
-        void shoot(Character &other);
+        void shoot(Character* other);
         bool hasBullets() const;
         void reload();
 

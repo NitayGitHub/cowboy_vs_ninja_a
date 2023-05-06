@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include <iostream>
 #include <stdexcept>
 #include <cmath>
 using namespace std;
@@ -15,9 +16,9 @@ namespace ariel
         return HP > 0;
     }
 
-    double Character::distance(const Character &other) const
+    double Character::distance(const Character* other) const
     {
-        return location.distance(other.location);
+        return location.distance(other->getLocation());
     }
 
     void Character::hit(int damage)
@@ -29,16 +30,13 @@ namespace ariel
         HP -= damage;
     }
 
-    void Character::print() const
+    string Character::print() const
     {
         string typeStr = (type == COWBOY ? "C" : "N");
         if(HP < 0){
-            cout << "Name:" << "(" << "(" << typeStr << ") " << name << ")" << endl;
-            return;
+            return "Name: ((" + typeStr + ") " + name + ")";
         }
-        cout << "Name: " << "(" << typeStr << ") " << name << endl;
-        cout << "Health Points: " << HP << endl;
-        location.print();   
+        return "Name: (" + typeStr + ") " + name + "\nHealth Points: " + to_string(HP) + "\nLocation: " + location.toString();
     }
 
     // Getters and Setters

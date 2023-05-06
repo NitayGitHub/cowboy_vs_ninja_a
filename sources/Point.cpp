@@ -57,4 +57,9 @@ namespace ariel
         this->y = y;
     }
 
+    string Point::toString() const
+    {
+        return "(" + to_string(x) + "," + to_string(y) + ")";
+    }
+
 }

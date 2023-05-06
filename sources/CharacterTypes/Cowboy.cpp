@@ -8,7 +8,7 @@ namespace ariel
     Cowboy::Cowboy(string name, Point location) : Character(name, location, 110, COWBOY), bullets(6) {}
 
     // Functions
-    void Cowboy::shoot(Character &other)
+    void Cowboy::shoot(Character* other)
     {
         if (hasBullets())
         {
@@ -19,7 +19,7 @@ namespace ariel
         {
             throw string("Character is dead");
         }
-        other.hit(10);
+        other->hit(10);
         this->bullets--;
     }
 

@@ -23,6 +23,7 @@ namespace ariel
         double getY() const;
         void setX(double x);
         void setY(double y);
+        string toString() const;
     };
 }
 #endif

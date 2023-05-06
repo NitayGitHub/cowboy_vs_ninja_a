@@ -29,8 +29,8 @@ namespace ariel
         // Functions
         virtual bool isAlive() const;
         virtual void hit(int damage);
-        virtual double distance(const Character &other) const;
-        virtual void print() const;
+        virtual double distance(const Character* other) const;
+        virtual string print() const;
 
         // Getters and Setters
         string getName() const;
