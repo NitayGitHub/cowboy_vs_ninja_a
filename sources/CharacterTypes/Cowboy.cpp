@@ -8,7 +8,7 @@ namespace ariel
     Cowboy::Cowboy(string name, Point location) : Character(name, location, 110, COWBOY), bullets(6) {}
 
     // Functions
-    void Cowboy::shoot(Character* other)
+    void Cowboy::shoot(Character *other)
     {
         if (hasBullets())
         {
@@ -17,7 +17,7 @@ namespace ariel
         }
         if (!isAlive())
         {
-            throw string("Character is dead");
+            throw string("Can't attack when you're dead");
         }
         other->hit(10);
         this->bullets--;
@@ -37,10 +37,34 @@ namespace ariel
         this->bullets = 6;
     }
 
+    string Cowboy::print() const
+    {
+        if (HP <= 0)
+        {
+            return "Name: ((C)" + name + ")";
+        }
+        return "Name: (C) " + name + "\nHealth Points: " + to_string(HP) + "\nLocation: " + location.toString();
+    }
+
     // Getters and Setters
     int Cowboy::getBullets() const
     {
         return bullets;
     }
 
+    void Cowboy::attack(Character *other)
+    {
+        if (!isAlive())
+        {
+            cout << "Can't attack when you're dead" << endl;
+            return;
+        }
+        if(!other->isAlive()){
+            return;
+        }
+        if (hasBullets()){
+            reload();
+        }
+        shoot(other);
+    }
 }

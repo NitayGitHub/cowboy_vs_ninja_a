@@ -21,6 +21,8 @@ namespace ariel
         void shoot(Character* other);
         bool hasBullets() const;
         void reload();
+        string print() const;
+        void attack(Character* other);
 
         // Getters and Setters
         int getBullets() const;

@@ -18,11 +18,7 @@ namespace ariel
     {
         if (!isAlive())
         {
-            throw string("Character is dead");
-        }
-        if (!other->isAlive())
-        {
-            throw string("Target Character is dead");
+            throw string("Can't move when you're dead");
         }
         location = Point::moveTowards(location, other->getLocation(), speed);
     }
@@ -48,6 +44,33 @@ namespace ariel
     int Ninja::getSpeed() const
     {
         return speed;
+    }
+
+    string Ninja::print() const
+    {
+        if (HP <= 0)
+        {
+            return "Name: ((N)" + name + ")";
+        }
+        return "Name: (N) " + name + "\nHealth Points: " + to_string(HP) + "\nLocation: " + location.toString();
+    }
+
+    void Ninja::attack(Character* other){
+        if (!isAlive())
+        {
+            cout << "Can't attack when you're dead" << endl;
+            return;
+        }
+        if (!other->isAlive())
+        {
+            return;
+        }
+        if (location.distance(other->getLocation()) > 1)
+        {
+            move(other);
+            return;
+        }
+        slash(other);
     }
 
 }

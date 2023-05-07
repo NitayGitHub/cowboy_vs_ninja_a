@@ -14,21 +14,32 @@ namespace ariel
 {
     class Team
     {
-    private:
-    list <Character*> team;
-    Character* leader;
+    protected:
+        list<Character *> team;
+        Character *leader;
 
     public:
         // Constructors and destructors
-        Team(Character* c);
+        Team(Character *leader);
         ~Team();
 
         // Functions
-        void add(Character* c);
-        void attack(Team* other);
-        void print() const;
-        int stillAlive() const;
+        virtual void add(Character *fighter);
+        void attack(Team *other);
+        void print();
+        int stillAlive();
 
+        // Extra functions
+        bool isLeaderAlive();
+        bool replaceLeader();
+        Character *closestToLeader(Team enemy);
+    };
+
+    class Team2 : public Team
+    {
+    public:
+        Team2(Character *leader);
+        void Team2::add(Character *fighter);
     };
 }
 #endif

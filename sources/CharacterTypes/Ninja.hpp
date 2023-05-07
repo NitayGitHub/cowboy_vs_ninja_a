@@ -22,7 +22,10 @@ namespace ariel
         virtual void move(Character* other);
         virtual void slash(Character* other);
 
+        // Extra functions
+        void attack(Character* other);
         int getSpeed() const;
+        string print() const;
     };
 
     // Ninja Types

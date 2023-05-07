@@ -30,15 +30,6 @@ namespace ariel
         HP -= damage;
     }
 
-    string Character::print() const
-    {
-        string typeStr = (type == COWBOY ? "C" : "N");
-        if(HP < 0){
-            return "Name: ((" + typeStr + ") " + name + ")";
-        }
-        return "Name: (" + typeStr + ") " + name + "\nHealth Points: " + to_string(HP) + "\nLocation: " + location.toString();
-    }
-
     // Getters and Setters
 
     string Character::getName() const

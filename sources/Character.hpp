@@ -30,7 +30,8 @@ namespace ariel
         virtual bool isAlive() const;
         virtual void hit(int damage);
         virtual double distance(const Character* other) const;
-        virtual string print() const;
+        virtual string print() const = 0;
+        virtual void attack(Character* other) = 0;
 
         // Getters and Setters
         string getName() const;
