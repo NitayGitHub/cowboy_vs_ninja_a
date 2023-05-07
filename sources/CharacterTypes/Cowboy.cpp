@@ -7,6 +7,8 @@ namespace ariel
     // Constructors
     Cowboy::Cowboy(string name, Point location) : Character(name, location, 110, COWBOY), bullets(6) {}
 
+    Cowboy::~Cowboy() {}
+
     // Functions
     void Cowboy::shoot(Character *other)
     {

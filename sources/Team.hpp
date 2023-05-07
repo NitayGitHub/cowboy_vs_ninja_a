@@ -5,8 +5,8 @@
 #include <list>
 #include <stdexcept>
 #include "Character.hpp"
-#include "Ninja.hpp"
-#include "Cowboy.hpp"
+#include "CharacterTypes/Ninja.hpp"
+#include "CharacterTypes/Cowboy.hpp"
 
 using namespace std;
 
@@ -39,7 +39,14 @@ namespace ariel
     {
     public:
         Team2(Character *leader);
-        void Team2::add(Character *fighter);
+        void add(Character *fighter);
+    };
+
+    class SmartTeam : public Team
+    {
+    public:
+        SmartTeam(Character *leader);
+        void add(Character *fighter);
     };
 }
 #endif

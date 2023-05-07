@@ -7,6 +7,8 @@ namespace ariel
     // Constructors
     Ninja::Ninja(string name, Point location, int speed, int HP) : Character(name, location, HP, NINJA), speed(speed) {}
 
+    Ninja::~Ninja() {}
+
     YoungNinja::YoungNinja(string name, Point location) : Ninja(name, location, 100, 14) {}
 
     TrainedNinja::TrainedNinja(string name, Point location) : Ninja(name, location, 120, 12) {}

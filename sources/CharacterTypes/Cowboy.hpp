@@ -16,6 +16,7 @@ namespace ariel
     public:
         // Constructors
         Cowboy(string name, Point location);
+        ~Cowboy();
 
         // Functions
         void shoot(Character* other);

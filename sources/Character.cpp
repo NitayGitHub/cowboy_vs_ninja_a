@@ -5,9 +5,11 @@
 using namespace std;
 namespace ariel
 {
-    // Constructors
+    // Constructors and destructors
 
     Character:: Character(string name, Point location, int HP, characterType type) : name(name), location(location), HP(HP), type(type) {}
+
+    Character:: ~Character() {}
 
     // Functions
 

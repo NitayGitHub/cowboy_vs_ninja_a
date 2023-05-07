@@ -25,6 +25,7 @@ namespace ariel
     public:
         // Constructors
         Character(string name, Point location, int HP, characterType type);
+        virtual ~Character();
 
         // Functions
         virtual bool isAlive() const;

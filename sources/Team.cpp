@@ -22,6 +22,8 @@ namespace ariel
         }
     }
 
+    SmartTeam::SmartTeam(Character *leader) : Team(leader) {}
+
     // Functions
     void Team::add(Character *fighter)
     {
@@ -51,6 +53,22 @@ namespace ariel
     bool Team::isLeaderAlive()
     {
         return leader->isAlive();
+    }
+
+    void SmartTeam::add(Character *fighter)
+    {
+        if (team.size() == 10)
+        {
+            throw string("Team is full");
+        }
+        if (fighter->getType() == COWBOY)
+        {
+            team.push_front(fighter);
+        }
+        else if (fighter->getType() == NINJA)
+        {
+            team.push_back(fighter);
+        }
     }
 
     bool Team::replaceLeader()
