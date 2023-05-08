@@ -5,8 +5,8 @@
 #include <list>
 #include <stdexcept>
 #include "Character.hpp"
-#include "CharacterTypes/Ninja.hpp"
-#include "CharacterTypes/Cowboy.hpp"
+#include "Ninja.hpp"
+#include "Cowboy.hpp"
 
 using namespace std;
 

@@ -9,6 +9,7 @@ namespace ariel
     Team::Team(Character *leader) : leader(leader)
     {
         team.push_back(leader);
+        leader->setInTeam(true);
     }
 
     Team2::Team2(Character *leader) : Team(leader) {}
@@ -29,15 +30,20 @@ namespace ariel
     {
         if (team.size() == 10)
         {
-            throw string("Team is full");
+            throw runtime_error("Team is full");
+        }
+        if(fighter->isInTeam()){
+            throw runtime_error("Character is already in a team");
         }
         if (fighter->getType() == COWBOY)
         {
-            team.push_back(fighter);
+            team.push_front(fighter);
+            fighter->setInTeam(true);
         }
         else if (fighter->getType() == NINJA)
         {
-            team.push_front(fighter);
+            team.push_back(fighter);
+            fighter->setInTeam(true);
         }
     }
 
@@ -45,30 +51,33 @@ namespace ariel
     {
         if (team.size() == 10)
         {
-            throw string("Team is full");
+            throw runtime_error("Team is full");
         }
         team.push_back(fighter);
-    }
-
-    bool Team::isLeaderAlive()
-    {
-        return leader->isAlive();
+        fighter->setInTeam(true);
     }
 
     void SmartTeam::add(Character *fighter)
     {
         if (team.size() == 10)
         {
-            throw string("Team is full");
+            throw runtime_error("Team is full");
         }
         if (fighter->getType() == COWBOY)
         {
             team.push_front(fighter);
+            fighter->setInTeam(true);
         }
         else if (fighter->getType() == NINJA)
         {
             team.push_back(fighter);
+            fighter->setInTeam(true);
         }
+    }
+
+    bool Team::isLeaderAlive()
+    {
+        return leader->isAlive();
     }
 
     bool Team::replaceLeader()
@@ -161,16 +170,18 @@ namespace ariel
         }
         if (!stillAlive())
         {
-            throw string("Can't attack when your team is dead");
+            throw runtime_error("Can't attack when your team is dead");
         }
         if (!other->stillAlive())
         {
-            throw string("Can't attack a dead team");
+            throw runtime_error("Can't attack a dead team");
         }
-
+        
         Character *closest = closestToLeader(*other);
+        
         for (list<Character *>::iterator it = team.begin(); it != team.end(); it++)
         {
+            cout << (*it)->print() << endl;
             if (!((*it)->isAlive()))
             {
                 continue;
@@ -184,6 +195,7 @@ namespace ariel
                 closest = closestToLeader(*other);
             }
             (*it)->attack(closest);
+            
         }
     }
 

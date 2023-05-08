@@ -27,7 +27,7 @@ namespace ariel
     {
         if (!isAlive())
         {
-            throw string("Character is dead");
+            throw runtime_error("Character is dead");
         }
         HP -= damage;
     }
@@ -67,6 +67,16 @@ namespace ariel
     void Character::setHP(int HP)
     {
         this->HP = HP;
+    }
+
+    bool Character::isInTeam() const
+    {
+        return inTeam;
+    }
+
+    void Character::setInTeam(bool inTeam)
+    {
+        this->inTeam = inTeam;
     }
 
 }

@@ -21,6 +21,7 @@ namespace ariel
         string name;
         Point location;
         int HP; // Health Points
+        bool inTeam = false;
 
     public:
         // Constructors
@@ -42,6 +43,8 @@ namespace ariel
         void setName(string name);
         void setLocation(Point location);
         void setHP(int HP);
+        bool isInTeam() const;
+        void setInTeam(bool inTeam);
     };
 
 }

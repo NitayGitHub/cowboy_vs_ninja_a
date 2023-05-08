@@ -12,14 +12,14 @@ namespace ariel
     // Functions
     void Cowboy::shoot(Character *other)
     {
-        if (hasBullets())
+        if (!hasBullets())
         {
             cout << "No bullets; reload first" << endl;
             return;
         }
         if (!isAlive())
         {
-            throw string("Can't attack when you're dead");
+            throw runtime_error("Can't attack when you're dead");
         }
         other->hit(10);
         this->bullets--;
@@ -34,7 +34,7 @@ namespace ariel
     {
         if (!isAlive())
         {
-            throw string("Character is dead");
+            throw runtime_error("Character is dead");
         }
         this->bullets = 6;
     }
