@@ -14,14 +14,14 @@ namespace ariel
 {
     class Team
     {
-    protected:
+    private:
         list<Character *> team;
         Character *leader;
 
     public:
         // Constructors and destructors
         Team(Character *leader);
-        ~Team();
+        virtual ~Team();
 
         // Functions
         virtual void add(Character *fighter);
@@ -32,21 +32,23 @@ namespace ariel
         // Extra functions
         bool isLeaderAlive();
         bool replaceLeader();
-        Character *closestToLeader(Team enemy);
+        Character *closestToLeader(Team *enemy);
+        Character* getLeader() const;
+        list<Character *> getTeam() const;
     };
 
     class Team2 : public Team
     {
     public:
         Team2(Character *leader);
-        void add(Character *fighter);
+        void add (Character *fighter) override;
     };
 
     class SmartTeam : public Team
     {
     public:
         SmartTeam(Character *leader);
-        void add(Character *fighter);
+        void add(Character *fighter) override;
     };
 }
 #endif

@@ -41,11 +41,11 @@ namespace ariel
 
     string Cowboy::print() const
     {
-        if (HP <= 0)
+        if (getHP() <= 0)
         {
-            return "Name: ((C)" + name + ")";
+            return "Name: ((C)" + getName() + ")";
         }
-        return "Name: (C) " + name + "\nHealth Points: " + to_string(HP) + "\nLocation: " + location.toString();
+        return "Name: (C) " + getName() + ". Health Points: " + to_string(getHP()) + ". Location: " + getLocation().toString();
     }
 
     // Getters and Setters

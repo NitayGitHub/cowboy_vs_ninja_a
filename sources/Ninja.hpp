@@ -11,7 +11,7 @@ namespace ariel
     // Ninja class
     class Ninja : public Character
     {
-    protected:
+    private:
         int speed;
 
     public:

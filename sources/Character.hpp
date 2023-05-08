@@ -16,7 +16,7 @@ namespace ariel
 
     class Character
     {
-    protected:
+    private:
         characterType type;
         string name;
         Point location;

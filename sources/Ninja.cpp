@@ -22,7 +22,9 @@ namespace ariel
         {
             throw runtime_error("Can't move when you're dead");
         }
-        location = Point::moveTowards(location, other->getLocation(), speed);
+        double charactersDistance = getLocation().distance(other->getLocation());
+        double distanceToMove = (speed < charactersDistance) ? speed : charactersDistance;
+        setLocation(Point::moveTowards(getLocation(), other->getLocation(), distanceToMove));
     }
 
     void Ninja::slash(Character* other)
@@ -35,9 +37,9 @@ namespace ariel
         {
             throw runtime_error("Target Character is dead");
         }
-        if (location.distance(other->getLocation()) > 1)
+        if (getLocation().distance(other->getLocation()) > 1)
         {
-            cout << "Target " << other->getName() << " is too far away from " << name << endl;
+            cout << "Target " << other->getName() << " is too far away from " << getName() << endl;
             return;
         }
         other->hit(31);
@@ -50,11 +52,11 @@ namespace ariel
 
     string Ninja::print() const
     {
-        if (HP <= 0)
+        if (getHP() <= 0)
         {
-            return "Name: ((N)" + name + ")";
+            return "Name: ((N)" + getName() + ")";
         }
-        return "Name: (N) " + name + "\nHealth Points: " + to_string(HP) + "\nLocation: " + location.toString();
+        return "Name: (N) " + getName() + ". Health Points: " + to_string(getHP()) + ". Location: " + getLocation().toString();
     }
 
     void Ninja::attack(Character* other){
@@ -68,7 +70,7 @@ namespace ariel
             cout << "Target Character is dead" << endl;
             return;
         }
-        if (location.distance(other->getLocation()) > 1)
+        if (getLocation().distance(other->getLocation()) > 1)
         {
             move(other);
             return;

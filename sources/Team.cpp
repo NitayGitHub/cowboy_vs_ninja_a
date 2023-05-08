@@ -49,28 +49,28 @@ namespace ariel
 
     void Team2::add(Character *fighter)
     {
-        if (team.size() == 10)
+        if (getTeam().size() == 10)
         {
             throw runtime_error("Team is full");
         }
-        team.push_back(fighter);
+        getTeam().push_back(fighter);
         fighter->setInTeam(true);
     }
 
     void SmartTeam::add(Character *fighter)
     {
-        if (team.size() == 10)
+        if (getTeam().size() == 10)
         {
             throw runtime_error("Team is full");
         }
         if (fighter->getType() == COWBOY)
         {
-            team.push_front(fighter);
+            getTeam().push_front(fighter);
             fighter->setInTeam(true);
         }
         else if (fighter->getType() == NINJA)
         {
-            team.push_back(fighter);
+            getTeam().push_back(fighter);
             fighter->setInTeam(true);
         }
     }
@@ -118,6 +118,7 @@ namespace ariel
         {
             cout << (*it)->print() << endl;
         }
+        cout << endl;
     }
 
     int Team::stillAlive()
@@ -133,11 +134,11 @@ namespace ariel
         return counter;
     }
 
-    Character *Team::closestToLeader(Team enemy)
+    Character* Team::closestToLeader(Team * enemy)
     {
         int minDistance = -1;
         Character *closest = nullptr;
-        for (list<Character *>::iterator it = enemy.team.begin(); it != enemy.team.end(); it++)
+        for (list<Character *>::iterator it = enemy->team.begin(); it != enemy->team.end(); it++)
         {
             if (!((*it)->isAlive()))
             {
@@ -177,13 +178,17 @@ namespace ariel
             throw runtime_error("Can't attack a dead team");
         }
         
-        Character *closest = closestToLeader(*other);
+        Character *closest = closestToLeader(other);
+        if(closest == nullptr){
+
+            cout << "closest is nullptr" << endl;
+        }
         
         for (list<Character *>::iterator it = team.begin(); it != team.end(); it++)
         {
-            cout << (*it)->print() << endl;
             if (!((*it)->isAlive()))
             {
+                
                 continue;
             }
             if (!closest->isAlive() && !other->stillAlive())
@@ -192,11 +197,23 @@ namespace ariel
             }
             else if (!closest->isAlive())
             {
-                closest = closestToLeader(*other);
+                closest = closestToLeader(other);
             }
             (*it)->attack(closest);
             
         }
+    }
+
+    // Getters and Setters
+
+    Character *Team::getLeader() const
+    {
+        return leader;
+    }
+
+    list<Character *> Team::getTeam() const
+    {
+        return team;
     }
 
 }
