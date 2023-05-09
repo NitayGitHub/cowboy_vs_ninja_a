@@ -23,11 +23,11 @@ namespace ariel
         Team(Character *leader);
         Team(Team &other);
         virtual ~Team();
-        Team(Team &&other) = delete;
+        Team(Team &&other);
 
         // operators
-        Team &operator=(const Team &other) = delete;
-        Team &&operator=(const Team &&other) = delete;
+        Team &operator=(const Team &other);
+        Team &&operator=(const Team &&other);
 
         // Functions
         virtual void add(Character *fighter);
