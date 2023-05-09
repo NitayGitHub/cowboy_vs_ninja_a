@@ -16,14 +16,14 @@ namespace ariel
     public:
         // Constructors
         Cowboy(string name, Point location);
-        ~Cowboy();
+        ~Cowboy() override;
 
         // Functions
         void shoot(Character* other);
         bool hasBullets() const;
         void reload();
-        string print() const;
-        void attack(Character* other);
+        string print() const override;
+        void attack(Character* other) override;
 
         // Getters and Setters
         int getBullets() const;

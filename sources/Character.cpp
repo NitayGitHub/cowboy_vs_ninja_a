@@ -7,7 +7,7 @@ namespace ariel
 {
     // Constructors and destructors
 
-    Character:: Character(string name, Point location, int HP, characterType type) : name(name), location(location), HP(HP), type(type) {}
+    Character:: Character(string name, Point location, int HealthPoints, characterType type) : name(name), location(location), HealthPoints(HealthPoints), type(type) {}
 
     Character:: ~Character() {}
 
@@ -15,7 +15,7 @@ namespace ariel
 
     bool Character::isAlive() const
     {
-        return HP > 0;
+        return HealthPoints > 0;
     }
 
     double Character::distance(const Character* other) const
@@ -29,7 +29,7 @@ namespace ariel
         {
             throw runtime_error("Character is dead");
         }
-        HP -= damage;
+        HealthPoints -= damage;
     }
 
     // Getters and Setters
@@ -51,7 +51,7 @@ namespace ariel
 
     int Character::getHP() const
     {
-        return HP;
+        return HealthPoints;
     }
 
     void Character::setName(string name)
@@ -64,9 +64,9 @@ namespace ariel
         this->location = location;
     }
 
-    void Character::setHP(int HP)
+    void Character::setHP(int HealthPoints)
     {
-        this->HP = HP;
+        this->HealthPoints = HealthPoints;
     }
 
     bool Character::isInTeam() const

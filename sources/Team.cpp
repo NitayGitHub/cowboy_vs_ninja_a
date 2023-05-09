@@ -5,11 +5,63 @@
 using namespace std;
 namespace ariel
 {
-    // Constructors
+    // Constructors and operators
     Team::Team(Character *leader) : leader(leader)
     {
         team.push_back(leader);
         leader->setInTeam(true);
+    }
+
+    Team::Team(Team &other) : leader(other.leader)
+    {
+        for (list<Character *>::iterator it = other.team.begin(); it != other.team.end(); it++)
+        {
+            team.push_back(*it);
+        }
+    }
+
+    Team& Team::operator=(const Team &other)
+    {
+        if (this == &other)
+        {
+            return *this;
+        }
+        for (list<Character *>::iterator it = team.begin(); it != team.end(); it++)
+        {
+            delete *it;
+        }
+        team.clear();
+        for (list<Character *>::iterator it = other.getTeam().begin(); it != other.getTeam().end(); it++)
+        {
+            team.push_back(*it);
+        }
+        return *this;
+    }
+
+    Team&& Team::operator=(const Team &&other)
+    {
+        if (this == &other)
+        {
+            return move(*this);
+        }
+        for (list<Character *>::iterator it = team.begin(); it != team.end(); it++)
+        {
+            delete *it;
+        }
+        team.clear();
+        for (list<Character *>::iterator it = other.getTeam().begin(); it != other.getTeam().end(); it++)
+        {
+            team.push_back(*it);
+        }
+        return move(*this);
+    }
+
+    Team::Team(Team &&other) : leader(other.leader)
+    {
+        for (list<Character *>::iterator it = other.team.begin(); it != other.team.end(); it++)
+        {
+            team.push_back(*it);
+        }
     }
 
     Team2::Team2(Character *leader) : Team(leader) {}

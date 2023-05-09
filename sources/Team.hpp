@@ -21,7 +21,13 @@ namespace ariel
     public:
         // Constructors and destructors
         Team(Character *leader);
+        Team(Team &other);
         virtual ~Team();
+        Team(Team &&other) = delete;
+
+        // operators
+        Team &operator=(const Team &other) = delete;
+        Team &&operator=(const Team &&other) = delete;
 
         // Functions
         virtual void add(Character *fighter);

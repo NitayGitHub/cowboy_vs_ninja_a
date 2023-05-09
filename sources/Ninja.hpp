@@ -16,17 +16,17 @@ namespace ariel
 
     public:
         // Constructors
-        Ninja(string name, Point location, int speed, int HP);
-        ~Ninja();
+        Ninja(string name, Point location, int speed, int HealthPoints);
+        ~Ninja() override;
 
         // Functions
         virtual void move(Character* other);
         virtual void slash(Character* other);
 
         // Extra functions
-        void attack(Character* other);
+        void attack(Character* other) override;
         int getSpeed() const;
-        string print() const;
+        string print() const override;
     };
 
     // Ninja Types

@@ -20,12 +20,12 @@ namespace ariel
         characterType type;
         string name;
         Point location;
-        int HP; // Health Points
+        int HealthPoints;
         bool inTeam = false;
 
     public:
         // Constructors
-        Character(string name, Point location, int HP, characterType type);
+        Character(string name, Point location, int HealthPoints, characterType type);
         virtual ~Character();
 
         // Functions
@@ -42,7 +42,7 @@ namespace ariel
         int getHP() const;
         void setName(string name);
         void setLocation(Point location);
-        void setHP(int HP);
+        void setHP(int HealthPoints);
         bool isInTeam() const;
         void setInTeam(bool inTeam);
     };

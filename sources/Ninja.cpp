@@ -5,7 +5,7 @@ using namespace std;
 namespace ariel
 {
     // Constructors
-    Ninja::Ninja(string name, Point location, int speed, int HP) : Character(name, location, HP, NINJA), speed(speed) {}
+    Ninja::Ninja(string name, Point location, int speed, int HealthPoints) : Character(name, location, HealthPoints, NINJA), speed(speed) {}
 
     Ninja::~Ninja() {}
 
