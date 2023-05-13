@@ -21,6 +21,10 @@ namespace ariel
         {
             throw runtime_error("Can't attack when you're dead");
         }
+        if (!other->isAlive())
+        {
+            throw runtime_error("Target Character is dead");
+        }
         other->hit(10);
         this->bullets--;
     }
@@ -58,10 +62,11 @@ namespace ariel
     {
         if (!isAlive())
         {
-            cout << "Can't attack when you're dead" << endl;
+            throw runtime_error("Can't attack when you're dead");
             return;
         }
         if(!other->isAlive()){
+            throw runtime_error("Target Character is dead");
             return;
         }
         if (hasBullets()){

@@ -62,12 +62,12 @@ namespace ariel
     void Ninja::attack(Character* other){
         if (!isAlive())
         {
-            cout << "Can't attack when you're dead" << endl;
+            throw runtime_error("Can't attack when you're dead");
             return;
         }
         if (!other->isAlive())
         {
-            cout << "Target Character is dead" << endl;
+            throw runtime_error("Target Character is dead");
             return;
         }
         if (getLocation().distance(other->getLocation()) > 1)

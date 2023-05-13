@@ -24,6 +24,9 @@ namespace ariel
         void setX(double x);
         void setY(double y);
         string toString() const;
+        
+        //
+        bool operator==(const Point &other) const;
     };
 }
 #endif

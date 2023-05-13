@@ -35,6 +35,13 @@ namespace ariel
         return Point(newX, newY);
     }
 
+    // Operators
+
+    bool Point::operator==(const Point &other) const
+    {
+        return abs(x - other.x) < 0.001 && abs(y - other.y) < 0.001;
+    }
+
     // Getters and Setters
 
     double Point::getX() const

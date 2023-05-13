@@ -8,6 +8,9 @@ namespace ariel
     // Constructors and operators
     Team::Team(Character *leader) : leader(leader)
     {
+        if(leader->isInTeam()){
+            throw invalid_argument("Character is already in a team");
+        }
         team.push_back(leader);
         leader->setInTeam(true);
     }
@@ -30,6 +33,8 @@ namespace ariel
 
     Team2::Team2(Character *leader) : Team(leader) {}
 
+    SmartTeam::SmartTeam(Character *leader) : Team(leader) {}
+
     // Destructors
     Team::~Team()
     {
@@ -38,8 +43,6 @@ namespace ariel
             delete *it;
         }
     }
-
-    SmartTeam::SmartTeam(Character *leader) : Team(leader) {}
 
     // Functions
     void Team::add(Character *fighter)
