@@ -42,7 +42,7 @@ namespace ariel
             cout << "Target " << other->getName() << " is too far away from " << getName() << endl;
             return;
         }
-        other->hit(31);
+        other->hit(40);
     }
 
     int Ninja::getSpeed() const
